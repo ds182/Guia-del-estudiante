@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía del Estudiante</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212; /* Fondo oscuro */
+            color: #ffffff; /* Texto claro */
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-image: url('https://via.placeholder.com/1920x300'); /* Aquí coloca el link de tu imagen */
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+            padding: 50px 0;
+            text-align: center;
+        }
+        h1 {
+            background-color: rgba(0, 0, 0, 0.6); /* Fondo semitransparente detrás del texto */
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .carousel {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+        }
+        .module {
+            flex: 0 0 300px;
+            margin-right: 20px;
+            background-color: #2a2a2a;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.2s;
+            position: relative;
+        }
+        .module:hover {
+            transform: scale(1.05);
+        }
+        .module img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .module h3 {
+            margin-top: 15px;
+            color: #ffcc00;
+        }
+        .carousel-controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        /* Para ocultar módulos */
+        .hidden {
+            display: none;
+        }
+        /* Contenedor para los controles de administración */
+        .admin-controls {
+            margin: 20px 0;
+            text-align: center;
+            display: none; /* Oculto por defecto */
+        }
+        .admin-controls span {
+            cursor: pointer;
+            margin: 0 10px;
+            font-size: 24px;
+        }
+        /* Formulario de contraseña */
+        .password-form {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .password-form input[type="password"] {
+            padding: 10px;
+            font-size: 16px;
+            margin-right: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+        /* Responsividad */
+        @media (max-width: 768px) {
+            .module {
+                flex: 0 0 100%;
+                margin-bottom: 20px;
+            }
+        }
+        @media (max-width: 576px) {
+            button {
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+<body class="student-mode">
+
+<header>
+    <h1>Guía del Estudiante</h1>
+</header>
+
+<div class="container">
+    <div class="carousel-controls">
+        <button onclick="scrollCarousel(-1)">⬅️</button>
+        <button onclick="scrollCarousel(1)">➡️</button>
+    </div>
+
+    <!-- Carrusel de módulos -->
+    <div class="carousel" id="carousel">
+        <!-- Módulo 1: Juegos -->
+        <div class="module" id="juegos">
+            <img src="https://via.placeholder.com/300x150" alt="Juegos de Inglés">
+            <h3>Juegos Interactivos</h3>
+            <p>Disfruta de juegos interactivos para mejorar tu inglés.</p>
+            <a href="#" id="linkJuegos">Acceder</a>
+        </div>
+
+        <!-- Módulo 2: Canciones -->
+        <div class="module" id="canciones">
+            <img src="https://via.placeholder.com/300x150" alt="Canciones en Inglés">
+            <h3>Canciones en Inglés</h3>
+            <p>Escucha canciones en inglés para mejorar tu pronunciación.</p>
+            <a href="#" id="linkCanciones">Acceder</a>
+        </div>
+
+        <!-- Módulo 3: Apuntes -->
+        <div class="module" id="apuntes">
+            <img src="https://via.placeholder.com/300x150" alt="Apuntes de Inglés">
+            <h3>Apuntes</h3>
+            <p>Consulta apuntes para reforzar tu gramática.</p>
+            <a href="#" id="linkApuntes">Acceder</a>
+        </div>
+
+        <!-- Módulo 4: CPS -->
+        <div class="module" id="cps">
+            <img src="https://via.placeholder.com/300x150" alt="Actividades Externas">
+            <h3>Actividades CPS</h3>
+            <p>Haz clic para acceder a más actividades educativas.</p>
+            <a href="https://ds182.github.io/CPS/" id="linkCPS">Acceder</a>
+        </div>
+    </div>
+
+    <!-- Contenedor de controles de administración -->
+    <div class="admin-controls" id="adminControls">
+        <h3>Controles de Administración</h3>
+        <span onclick="toggleModule('juegos')">👁️ Juegos</span>
+        <span onclick="toggleModule('canciones')">👁️ Canciones</span>
+        <span onclick="toggleModule('apuntes')">👁️ Apuntes</span>
+        <span onclick="toggleModule('cps')">👁️ CPS</span>
+    </div>
+</div>
+
+<!-- Formulario de contraseña para cambiar entre modos -->
+<div class="password-form">
+    <input type="password" id="password" placeholder="Introduce la contraseña" onkeydown="checkPassword(event)">
+</div>
+
+<script>
+    const carousel = document.getElementById('carousel');
+
+    // Función para desplazar el carrusel
+    function scrollCarousel(direction) {
+        const scrollAmount = direction * 320; // Ajusta el valor para controlar el desplazamiento
+        carousel.scrollBy({
+            left: scrollAmount,
+            behavior: 'smooth'
+        });
+    }
+
+    // Función para alternar la visibilidad del módulo
+    function toggleModule(moduleId) {
+        const module = document.getElementById(moduleId);
+        module.classList.toggle('hidden');
+        
+        // Guardar el estado en localStorage
+        const isHidden = module.classList.contains('hidden');
+        localStorage.setItem(moduleId, isHidden);
+    }
+
+    // Cargar el estado de los módulos desde localStorage
+    function loadModulesState() {
+        const modules = ['juegos', 'canciones', 'apuntes', 'cps'];
+        modules.forEach(moduleId => {
+            const isHidden = localStorage.getItem(moduleId) === 'true';
+            const module = document.getElementById(moduleId);
+            if (isHidden) {
+                module.classList.add('hidden');
+            }
+        });
+    }
+
+    // Verificar la contraseña y alternar entre modos
+    function checkPassword(event) {
+        if (event.key === 'Enter') {
+            const password = document.getElementById('password').value;
+            if (password === '552455') {
+                const isAdmin = document.body.classList.contains('student-mode');
+                if (isAdmin) {
+                    document.body.classList.remove('student-mode'); // Cambia a modo admin
+                    document.getElementById('adminControls').style.display = 'block'; // Muestra los controles de admin
+                    alert('Modo admin activado');
+                } else {
+                    document.body.classList.add('student-mode'); // Regresa a modo estudiante
+                    document.getElementById('adminControls').style.display = 'none'; // Oculta los controles de admin
+                    alert('Modo estudiante activado');
+                }
+                document.getElementById('password').value = ''; // Limpiar el campo de contraseña
+                loadModulesState(); // Cargar el estado de los módulos al cambiar de modo
+            } else {
+                alert('Contraseña incorrecta');
+            }
+        }
+    }
+
+    // Cargar el estado de los módulos al inicio
+    loadModulesState();
+</script>
+</body>
+</html>
