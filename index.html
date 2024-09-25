@@ -27,215 +27,211 @@
             border-radius: 10px;
         }
         .container {
-            max-width: 1200px;
-            margin: 20px auto;
+            max-width: 1200px; /* Ancho máximo del contenedor */
+            margin: 20px auto; /* Centrado del contenedor */
             padding: 0 20px;
         }
         .carousel {
-            display: flex;
-            overflow-x: auto;
-            scroll-behavior: smooth;
+            display: flex; /* Flexbox para disposición horizontal */
+            overflow-x: auto; /* Permite desplazamiento horizontal */
+            margin-bottom: 40px;
+            scroll-snap-type: x mandatory; /* Habilita el efecto de "snap" */
         }
         .module {
-            flex: 0 0 300px;
-            margin-right: 20px;
-            background-color: #2a2a2a;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-            padding: 20px;
-            text-align: center;
-            transition: transform 0.2s;
-            position: relative;
+            flex: 0 0 auto; /* Permite que los módulos mantengan su ancho y no se compriman */
+            width: 300px; /* Ancho fijo para cada módulo */
+            margin: 20px; /* Margen entre módulos */
+            background-color: #2a2a2a; /* Color de fondo de cada módulo */
+            border-radius: 10px; /* Bordes redondeados */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra para dar efecto de profundidad */
+            padding: 20px; /* Espaciado interno */
+            text-align: center; /* Centra el texto dentro del módulo */
+            transition: transform 0.2s; /* Efecto de escala en hover */
+            scroll-snap-align: start; /* Alineación para el efecto de "snap" */
         }
         .module:hover {
-            transform: scale(1.05);
+            transform: scale(1.05); /* Escala al pasar el ratón */
         }
         .module img {
-            width: 100%;
-            border-radius: 10px;
+            width: 100%; /* Imagen ocupa todo el ancho del módulo */
+            border-radius: 10px; /* Bordes redondeados para la imagen */
         }
         .module h3 {
-            margin-top: 15px;
-            color: #ffcc00;
-        }
-        .carousel-controls {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        /* Para ocultar módulos */
-        .hidden {
-            display: none;
-        }
-        /* Contenedor para los controles de administración */
-        .admin-controls {
-            margin: 20px 0;
-            text-align: center;
-            display: none; /* Oculto por defecto */
-        }
-        .admin-controls span {
-            cursor: pointer;
-            margin: 0 10px;
-            font-size: 24px;
-        }
-        /* Formulario de contraseña */
-        .password-form {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .password-form input[type="password"] {
-            padding: 10px;
-            font-size: 16px;
-            margin-right: 10px;
-            border-radius: 5px;
-            border: none;
+            margin-top: 15px; /* Margen superior para el título */
+            color: #ffcc00; /* Color del título */
         }
         /* Responsividad */
         @media (max-width: 768px) {
             .module {
-                flex: 0 0 100%;
-                margin-bottom: 20px;
+                width: 100%; /* Módulos ocupan todo el ancho en pantallas pequeñas */
+                margin: 10px 0; /* Margen reducido en pantallas pequeñas */
             }
-        }
-        @media (max-width: 576px) {
-            button {
-                padding: 8px 16px;
+            header {
+                padding: 30px 0; /* Menor padding en el header para pantallas pequeñas */
             }
         }
     </style>
 </head>
-<body class="student-mode">
+<body>
 
 <header>
     <h1>Guía del Estudiante</h1>
 </header>
 
 <div class="container">
-    <div class="carousel-controls">
-        <button onclick="scrollCarousel(-1)">⬅️</button>
-        <button onclick="scrollCarousel(1)">➡️</button>
-    </div>
-
-    <!-- Carrusel de módulos -->
-    <div class="carousel" id="carousel">
-        <!-- Módulo 1: Juegos -->
-        <div class="module" id="juegos">
-            <img src="https://via.placeholder.com/300x150" alt="Juegos de Inglés">
-            <h3>Juegos Interactivos</h3>
-            <p>Disfruta de juegos interactivos para mejorar tu inglés.</p>
-            <a href="#" id="linkJuegos">Acceder</a>
+    <!-- Carrusel de Apuntes -->
+    <h2>Apuntes</h2>
+    <div class="carousel" id="carousel-apuntes">
+        <div class="module" id="apunte1">
+            <img src="https://via.placeholder.com/300x150" alt="Apunte 1">
+            <h3>Apunte 1</h3>
+            <p>Descripción del apunte 1.</p>
+            <a href="#" id="linkApunte1">Acceder</a>
         </div>
-
-        <!-- Módulo 2: Canciones -->
-        <div class="module" id="canciones">
-            <img src="https://via.placeholder.com/300x150" alt="Canciones en Inglés">
-            <h3>Canciones en Inglés</h3>
-            <p>Escucha canciones en inglés para mejorar tu pronunciación.</p>
-            <a href="#" id="linkCanciones">Acceder</a>
+        <div class="module" id="apunte2">
+            <img src="https://via.placeholder.com/300x150" alt="Apunte 2">
+            <h3>Apunte 2</h3>
+            <p>Descripción del apunte 2.</p>
+            <a href="#" id="linkApunte2">Acceder</a>
         </div>
-
-        <!-- Módulo 3: Apuntes -->
-        <div class="module" id="apuntes">
-            <img src="https://via.placeholder.com/300x150" alt="Apuntes de Inglés">
-            <h3>Apuntes</h3>
-            <p>Consulta apuntes para reforzar tu gramática.</p>
-            <a href="#" id="linkApuntes">Acceder</a>
+        <div class="module" id="apunte3">
+            <img src="https://via.placeholder.com/300x150" alt="Apunte 3">
+            <h3>Apunte 3</h3>
+            <p>Descripción del apunte 3.</p>
+            <a href="#" id="linkApunte3">Acceder</a>
+        </div>        
+        <!-- Agregar más módulos aquí -->
+        <div class="module" id="apunte4">
+            <img src="https://via.placeholder.com/300x150" alt="Apunte 4">
+            <h3>Apunte 4</h3>
+            <p>Descripción del apunte 4.</p>
+            <a href="#" id="linkApunte4">Acceder</a>
         </div>
-
-        <!-- Módulo 4: CPS -->
-        <div class="module" id="cps">
-            <img src="https://via.placeholder.com/300x150" alt="Actividades Externas">
-            <h3>Actividades CPS</h3>
-            <p>Haz clic para acceder a más actividades educativas.</p>
-            <a href="https://ds182.github.io/CPS/" id="linkCPS">Acceder</a>
-        </div>
-    </div>
-
-    <!-- Contenedor de controles de administración -->
-    <div class="admin-controls" id="adminControls">
-        <h3>Controles de Administración</h3>
-        <span onclick="toggleModule('juegos')">👁️ Juegos</span>
-        <span onclick="toggleModule('canciones')">👁️ Canciones</span>
-        <span onclick="toggleModule('apuntes')">👁️ Apuntes</span>
-        <span onclick="toggleModule('cps')">👁️ CPS</span>
-    </div>
-</div>
-
-<!-- Formulario de contraseña para cambiar entre modos -->
-<div class="password-form">
-    <input type="password" id="password" placeholder="Introduce la contraseña" onkeydown="checkPassword(event)">
-</div>
-
-<script>
-    const carousel = document.getElementById('carousel');
-
-    // Función para desplazar el carrusel
-    function scrollCarousel(direction) {
-        const scrollAmount = direction * 320; // Ajusta el valor para controlar el desplazamiento
-        carousel.scrollBy({
-            left: scrollAmount,
-            behavior: 'smooth'
-        });
-    }
-
-    // Función para alternar la visibilidad del módulo
-    function toggleModule(moduleId) {
-        const module = document.getElementById(moduleId);
-        module.classList.toggle('hidden');
         
-        // Guardar el estado en localStorage
-        const isHidden = module.classList.contains('hidden');
-        localStorage.setItem(moduleId, isHidden);
-    }
+    </div>
 
-    // Cargar el estado de los módulos desde localStorage
-    function loadModulesState() {
-        const modules = ['juegos', 'canciones', 'apuntes', 'cps'];
-        modules.forEach(moduleId => {
-            const isHidden = localStorage.getItem(moduleId) === 'true';
-            const module = document.getElementById(moduleId);
-            if (isHidden) {
-                module.classList.add('hidden');
-            }
-        });
-    }
+    <!-- Carrusel de Canciones -->
+    <h2>Canciones</h2>
+    <div class="carousel" id="carousel-canciones">
+        <div class="module" id="cancion1">
+            <img src="https://via.placeholder.com/300x150" alt="Canción 1">
+            <h3>Canción 1</h3>
+            <p>Descripción de la canción 1.</p>
+            <a href="#" id="linkCancion1">Acceder</a>
+        </div>
+        <div class="module" id="cancion2">
+            <img src="https://via.placeholder.com/300x150" alt="Canción 2">
+            <h3>Canción 2</h3>
+            <p>Descripción de la canción 2.</p>
+            <a href="#" id="linkCancion2">Acceder</a>
+        </div>
+        <div class="module" id="cancion3">
+            <img src="https://via.placeholder.com/300x150" alt="Canción 3">
+            <h3>Canción 3</h3>
+            <p>Descripción de la canción 3.</p>
+            <a href="#" id="linkCancion3">Acceder</a>
+        </div>
+        <!-- Agregar más módulos aquí -->
+         <!-- Nuevo módulo agregado -->
+    <div class="module" id="cancion4">
+        <img src="https://via.placeholder.com/300x150" alt="Canción 4">
+        <h3>Canción 4</h3>
+        <p>Descripción de la canción 4.</p>
+        <a href="#" id="linkCancion4">Escuchar</a>
+    </div>
+    </div>
 
-    // Verificar la contraseña y alternar entre modos
-    function checkPassword(event) {
-        if (event.key === 'Enter') {
-            const password = document.getElementById('password').value;
-            if (password === '552455') {
-                const isAdmin = document.body.classList.contains('student-mode');
-                if (isAdmin) {
-                    document.body.classList.remove('student-mode'); // Cambia a modo admin
-                    document.getElementById('adminControls').style.display = 'block'; // Muestra los controles de admin
-                    alert('Modo admin activado');
-                } else {
-                    document.body.classList.add('student-mode'); // Regresa a modo estudiante
-                    document.getElementById('adminControls').style.display = 'none'; // Oculta los controles de admin
-                    alert('Modo estudiante activado');
-                }
-                document.getElementById('password').value = ''; // Limpiar el campo de contraseña
-                loadModulesState(); // Cargar el estado de los módulos al cambiar de modo
-            } else {
-                alert('Contraseña incorrecta');
-            }
-        }
-    }
+    <!-- Carrusel de Videos -->
+    <h2>Videos</h2>
+    <div class="carousel" id="carousel-videos">
+        <div class="module" id="video1">
+            <img src="https://via.placeholder.com/300x150" alt="Video 1">
+            <h3>Video 1</h3>
+            <p>Descripción del video 1.</p>
+            <a href="#" id="linkVideo1">Acceder</a>
+        </div>
+        <div class="module" id="video2">
+            <img src="https://via.placeholder.com/300x150" alt="Video 2">
+            <h3>Video 2</h3>
+            <p>Descripción del video 2.</p>
+            <a href="#" id="linkVideo2">Acceder</a>
+        </div>
+        <div class="module" id="video3">
+            <img src="https://via.placeholder.com/300x150" alt="Video 3">
+            <h3>Video 3</h3>
+            <p>Descripción del video 3.</p>
+            <a href="#" id="linkVideo3">Acceder</a>
+        </div>
+        <!-- Agregar más módulos aquí -->
+        <div class="module" id="video4">
+            <img src="https://via.placeholder.com/300x150" alt="Video 4">
+            <h3>Video 4</h3>
+            <p>Descripción del video 4.</p>
+            <a href="#" id="linkVideo4">Ver Video</a>
+        </div>        
+    </div>
 
-    // Cargar el estado de los módulos al inicio
-    loadModulesState();
-</script>
+    <!-- Carrusel de Anuncios -->
+    <h2>Anuncios</h2>
+    <div class="carousel" id="carousel-anuncios">
+        <div class="module" id="anuncio1">
+            <img src="https://via.placeholder.com/300x150" alt="Anuncio 1">
+            <h3>Anuncio 1</h3>
+            <p>Descripción del anuncio 1.</p>
+            <a href="#" id="linkAnuncio1">Acceder</a>
+        </div>
+        <div class="module" id="anuncio2">
+            <img src="https://via.placeholder.com/300x150" alt="Anuncio 2">
+            <h3>Anuncio 2</h3>
+            <p>Descripción del anuncio 2.</p>
+            <a href="#" id="linkAnuncio2">Acceder</a>
+        </div>
+        <div class="module" id="anuncio3">
+            <img src="https://via.placeholder.com/300x150" alt="Anuncio 3">
+            <h3>Anuncio 3</h3>
+            <p>Descripción del anuncio 3.</p>
+            <a href="#" id="linkAnuncio3">Acceder</a>
+        </div>
+        <!-- Agregar más módulos aquí -->
+        <div class="module" id="anuncio4">
+            <img src="https://via.placeholder.com/300x150" alt="Anuncio 4">
+            <h3>Anuncio 4</h3>
+            <p>Descripción del anuncio 4.</p>
+            <a href="#" id="linkAnuncio4">Ver Anuncio</a>
+        </div>        
+    </div>
+
+    <!-- Nueva sección: Artículos -->
+    <h2>Artículos</h2>
+    <div class="carousel" id="carousel-articulos">
+        <div class="module" id="articulo1">
+            <img src="https://via.placeholder.com/300x150" alt="Artículo 1">
+            <h3>Artículo 1</h3>
+            <p>Descripción del artículo 1.</p>
+            <a href="#" id="linkArticulo1">Acceder</a>
+        </div>
+        <div class="module" id="articulo2">
+            <img src="https://via.placeholder.com/300x150" alt="Artículo 2">
+            <h3>Artículo 2</h3>
+            <p>Descripción del artículo 2.</p>
+            <a href="#" id="linkArticulo2">Acceder</a>
+        </div>
+        <div class="module" id="articulo3">
+            <img src="https://via.placeholder.com/300x150" alt="Artículo 3">
+            <h3>Artículo 3</h3>
+            <p>Descripción del artículo 3.</p>
+            <a href="#" id="linkArticulo3">Acceder</a>
+        </div>
+        <!-- Agregar más módulos aquí -->
+        <div class="module" id="articulo4">
+            <img src="https://via.placeholder.com/300x150" alt="Artículo 4">
+            <h3>Artículo 4</h3>
+            <p>Descripción del artículo 4.</p>
+            <a href="#" id="linkArticulo4">Ver Artículo</a>
+        </div>        
+    </div>
+
+</div>
+
 </body>
 </html>
