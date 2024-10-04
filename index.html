@@ -19,12 +19,36 @@
             color: #ffffff;
             padding: 50px 0;
             text-align: center;
+            position: relative;
         }
         h1 {
             background-color: rgba(0, 0, 0, 0.6); /* Fondo semitransparente detrás del texto */
             display: inline-block;
             padding: 10px 20px;
             border-radius: 10px;
+        }
+        .button-container {
+            margin-top: 15px; /* Espacio debajo del título */
+            display: flex;
+            justify-content: center; /* Centra los botones debajo del título */
+            gap: 10px; /* Espacio entre los botones */
+        }
+        .avisos-btn, .programa-btn {
+            padding: 10px 20px;
+            background-color: #1a237e; /* Azul rey inicial */
+            color: #ffffff;
+            border-radius: 5px;
+            font-size: 14px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s; /* Transición para cambio de color */
+        }
+        .avisos-btn:hover, .programa-btn:hover {
+            background-color: #39ff14; /* Verde fosforescente al hacer hover */
+            color: #121212; /* Texto oscuro al hacer hover */
+        }
+        .avisos-btn:active, .programa-btn:active {
+            background-color: #00e600; /* Verde más oscuro al hacer clic */
         }
         .container {
             max-width: 1200px; /* Ancho máximo del contenedor */
@@ -39,12 +63,12 @@
         }
         .module {
             flex: 0 0 auto; /* Permite que los módulos mantengan su ancho y no se compriman */
-            width: 300px; /* Ancho fijo para cada módulo */
-            margin: 20px; /* Margen entre módulos */
+            width: 150px; /* Ancho reducido para cada módulo */
+            margin: 10px; /* Margen más pequeño entre módulos */
             background-color: #2a2a2a; /* Color de fondo de cada módulo */
             border-radius: 10px; /* Bordes redondeados */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra para dar efecto de profundidad */
-            padding: 20px; /* Espaciado interno */
+            padding: 15px; /* Espaciado interno */
             text-align: center; /* Centra el texto dentro del módulo */
             transition: transform 0.2s; /* Efecto de escala en hover */
             scroll-snap-align: start; /* Alineación para el efecto de "snap" */
@@ -53,12 +77,18 @@
             transform: scale(1.05); /* Escala al pasar el ratón */
         }
         .module img {
-            width: 100%; /* Imagen ocupa todo el ancho del módulo */
+            width: 80px; /* Tamaño reducido para la imagen */
+            height: 80px; /* Tamaño reducido para la imagen */
             border-radius: 10px; /* Bordes redondeados para la imagen */
+            object-fit: cover; /* Asegura que la imagen mantenga sus proporciones */
         }
         .module h3 {
-            margin-top: 15px; /* Margen superior para el título */
+            margin-top: 10px; /* Margen superior más pequeño para el título */
             color: #ffcc00; /* Color del título */
+            font-size: 16px; /* Tamaño de letra reducido */
+        }
+        .module p {
+            font-size: 12px; /* Texto más pequeño en las descripciones */
         }
         .module a {
             background-color: rgba(255, 204, 0, 0.8); /* Fondo amarillo semitransparente */
@@ -67,16 +97,27 @@
             border-radius: 5px; /* Bordes redondeados para el fondo */
             text-decoration: none; /* Elimina el subrayado */
             font-weight: bold; /* Hace el texto más grueso */
+            font-size: 12px; /* Tamaño de texto reducido */
         }
         /* Responsividad */
         @media (max-width: 768px) {
             .module {
-                width: 100%; /* Módulos ocupan todo el ancho en pantallas pequeñas */
-                margin: 10px 0; /* Margen reducido en pantallas pequeñas */
+                width: 120px; /* Ancho aún más pequeño en pantallas pequeñas */
+                margin: 5px; /* Margen reducido en pantallas pequeñas */
             }
             header {
                 padding: 30px 0; /* Menor padding en el header para pantallas pequeñas */
             }
+            footer {
+                padding: 15px; /* Menor padding en el pie de página para pantallas pequeñas */
+            }
+        }
+        footer {
+            background-color: #1a237e; 
+            color: #ffffff; 
+            text-align: center; 
+            padding: 20px; 
+            width: 100%;
         }
     </style>
 </head>
@@ -84,6 +125,10 @@
 
 <header>
     <h1>Guía del Estudiante</h1>
+    <div class="button-container">
+        <a href="https://ds182.github.io/Aviso-de-cambios/" class="avisos-btn">Avisos</a>
+        <a href="https://ds182.github.io/Programa-B-sico-A/" class="programa-btn">Programa</a>
+    </div>
 </header>
 
 <div class="container">
@@ -91,15 +136,15 @@
     <h2>Apuntes</h2>
     <div class="carousel" id="carousel-apuntes">
         <div class="module" id="apunte1">
-            <img src="https://i.ibb.co/vXtHdJw/Dise-o-sin-t-tulo-12.png" alt="Apunte 1">
+            <img src="https://i.ibb.co/nr3v71W/Dise-o-sin-t-tulo-24.png" alt="Apunte 1">
             <h3>Apunte 1</h3>
-            <p>Dias de la semana en inglés.</p>
+            <p>Saludos en Inglés.</p>
             <a href="https://ds182.github.io/Clase-1/" id="linkApunte1">Acceder</a>
         </div>
         <div class="module" id="apunte2">
-            <img src="https://via.placeholder.com/300x150" alt="Apunte 2">
+            <img src="https://i.ibb.co/StxK5t4/Dise-o-sin-t-tulo-25.png" alt="Apunte 2">
             <h3>Apunte 2</h3>
-            <p>Descripción del apunte 2.</p>
+            <p>Numeros.</p>
             <a href="#" id="linkApunte2">Acceder</a>
         </div>
         <div class="module" id="apunte3">
@@ -115,7 +160,6 @@
             <p>Descripción del apunte 4.</p>
             <a href="#" id="linkApunte4">Acceder</a>
         </div>
-        
     </div>
 
     <!-- Carrusel de Canciones -->
@@ -139,50 +183,57 @@
             <p>Descripción de la canción 3.</p>
             <a href="#" id="linkCancion3">Acceder</a>
         </div>
-        <!-- Agregar más módulos aquí -->
-         <!-- Nuevo módulo agregado -->
-    <div class="module" id="cancion4">
-        <img src="https://via.placeholder.com/300x150" alt="Canción 4">
-        <h3>Canción 4</h3>
-        <p>Descripción de la canción 4.</p>
-        <a href="#" id="linkCancion4">Escuchar</a>
-    </div>
-        
     </div>
 
-    <!-- Carrusel de Recursos -->
-    <h2>Recursos</h2>
-    <div class="carousel" id="carousel-recursos">
-        <div class="module" id="recurso1">
-            <img src="https://via.placeholder.com/300x150" alt="Recurso 1">
-            <h3>Recurso 1</h3>
-            <p>Descripción del recurso 1.</p>
-            <a href="#" id="linkRecurso1">Acceder</a>
+    <h2>Videos</h2>
+        <div class="carousel" id="carousel-videos">
+            <div class="module" id="video1">
+                <img src="https://via.placeholder.com/300x150" alt="Video 1">
+                <h3>Video 1</h3>
+                <p>Descripción del video 1.</p>
+                <a href="https://www.youtube.com/watch?v=video1" id="linkVideo1" target="_blank">Acceder</a>
+            </div>
+            <div class="module" id="video2">
+                <img src="https://via.placeholder.com/300x150" alt="Video 2">
+                <h3>Video 2</h3>
+                <p>Descripción del video 2.</p>
+                <a href="https://www.youtube.com/watch?v=video2" id="linkVideo2" target="_blank">Acceder</a>
+            </div>
+            <div class="module" id="video3">
+                <img src="https://via.placeholder.com/300x150" alt="Video 3">
+                <h3>Video 3</h3>
+                <p>Descripción del video 3.</p>
+                <a href="https://www.youtube.com/watch?v=video3" id="linkVideo3" target="_blank">Acceder</a>
+            </div>
         </div>
-        <div class="module" id="recurso2">
-            <img src="https://via.placeholder.com/300x150" alt="Recurso 2">
-            <h3>Recurso 2</h3>
-            <p>Descripción del recurso 2.</p>
-            <a href="#" id="linkRecurso2">Acceder</a>
-        </div>
-        <div class="module" id="recurso3">
-            <img src="https://via.placeholder.com/300x150" alt="Recurso 3">
-            <h3>Recurso 3</h3>
-            <p>Descripción del recurso 3.</p>
-            <a href="#" id="linkRecurso3">Acceder</a>
-        </div>
-        <!-- Agregar más módulos aquí -->
-         <!-- Nuevo módulo agregado -->
-    <div class="module" id="recurso4">
-        <img src="https://via.placeholder.com/300x150" alt="Recurso 4">
-        <h3>Recurso 4</h3>
-        <p>Descripción del recurso 4.</p>
-        <a href="#" id="linkRecurso4">Acceder</a>
-    </div>
-        
-    </div>
+
+        <h2>Juegos</h2>
+            <div class="carousel" id="carousel-juegos">
+                <div class="module" id="juego1">
+                    <img src="https://via.placeholder.com/300x150" alt="Juego 1">
+                    <h3>Juego 1</h3>
+                    <p>Descripción del juego 1.</p>
+                    <a href="https://www.example.com/juego1" id="linkJuego1" target="_blank">Acceder</a>
+                </div>
+                <div class="module" id="juego2">
+                    <img src="https://via.placeholder.com/300x150" alt="Juego 2">
+                    <h3>Juego 2</h3>
+                    <p>Descripción del juego 2.</p>
+                    <a href="https://www.example.com/juego2" id="linkJuego2" target="_blank">Acceder</a>
+                </div>
+                <div class="module" id="juego3">
+                    <img src="https://via.placeholder.com/300x150" alt="Juego 3">
+                    <h3>Juego 3</h3>
+                    <p>Descripción del juego 3.</p>
+                    <a href="https://www.example.com/juego3" id="linkJuego3" target="_blank">Acceder</a>
+                </div>
+            </div>
+
 </div>
+
+<footer>
+    <p>&copy; 2024 English School CPS. Todos los derechos reservados.</p>
+</footer>
 
 </body>
 </html>
-
